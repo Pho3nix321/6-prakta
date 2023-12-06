@@ -1,0 +1,22 @@
+steges:
+  - test
+  - pushing
+  - Complete
+tes-job:
+  stage: test
+  script:
+   - echo "Running test job"
+   - echo "Pupa"
+   - echo "Korvo"
+publish-job:
+  stage: pushing
+  script:
+   - dotnet build --configuration Release
+   - dotner publish --no-build  --no-restore --configuration Release --output $CI_PROJECT_DIR/publish/
+   only:
+  - master
+tes-job:
+  stage: Complete
+  script:
+   - echo "Korvo drop pupa"
+   - echo "it's a Korvo, and i hate human"
